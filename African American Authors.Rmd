@@ -37,6 +37,7 @@ let's do the same for Booker T. Washington
 ```{r se, include=TRUE, echo=TRUE}
 gutenberg_works(author=="Washington, Booker T.")
 booker_books<-gutenberg_download(c(2376,26507,45125), meta_fields = "title")
+head(booker_books)
 ```
 
 #Here comes the turn for Zora Neale Hurston
@@ -119,6 +120,7 @@ head(bfd, 20)
 ```
 
 
+
 ```{r dubois, include=FALSE, echo=TRUE}
 book4<-dubois_books%>%
   unnest_tokens(word, text)%>%
@@ -169,7 +171,7 @@ ggplot(freq, aes(x=proportion, y="Frederick Douglass", color=abs(`Frederick Doug
   labs(y="Du Bois", x=NULL)
 ```
 
-# Sentiment Analysis
+# Sentiment Analysis for Booker T. Washington and W.E.B DUBOIS
 ```{r sentiment, include=TRUE, echo=TRUE}
 library(dplyr)
 library(stringr)
@@ -179,8 +181,7 @@ head(booker_books)
 tidy_book<-booker_books%>%
   group_by(title)%>%
   mutate(linenumber=row_number(),
-         chapter=cumsum(str_detect(text, regex("^chapter [\\divxlc]",
-                                               ignore_case = TRUE))))%>%
+         chapter=cumsum(str_detect(text, regex("^chapter [\\divxlc]",                                               ignore_case = TRUE))))%>%
   ungroup()%>%
   unnest_tokens(word,text)
 head(tidy_book,40)
@@ -189,6 +190,7 @@ library(textdata)
 lexicon_nrc()
 get_sentiments("afinn")
 get_sentiments("nrc")
+get_sentiments("bing")
 nrc_joy<-get_sentiments("nrc")%>%
   filter(sentiment=="joy")
 nrc_joy
@@ -205,7 +207,7 @@ sad<-tidy_book%>%
   inner_join(nrc_sad)%>%
   count(word, sort = TRUE)
 head(sad)
-
+#Get sentiment for Booker T. Washington
 rec1<-tidy_book%>%
   filter(title=="The Future of the American Negro")%>%
   inner_join(nrc_joy)%>%
@@ -245,12 +247,77 @@ head(ter)
 ter1<-ter%>%
   filter(title=="The Future of the American Negro"& n>50)
 
-books3<-dubois_books%>%
+#Sentiments for Booker T. Washington
+dubois<-dubois_books%>%
   group_by(title)%>%
-  unnest_tokens(word,text)%>%
-  anti_join(stop_words)%>%
+  mutate(linenumber=row_number(),
+         chapter=cumsum(str_detect(text, regex("^chapter [\\divxlc]",                                               ignore_case = TRUE))))%>%
+  ungroup()%>%
+  unnest_tokens(word,text)
+tail(dubois)
+rec5<-dubois%>%
+  filter(title=="The Souls of Black Folk")%>%
+  inner_join(nrc_joy)%>%
   count(word, sort = TRUE)
-head(book3)
+head(rec5,10)
+rec5_1<-dubois%>%
+  filter(title=="The Souls of Black Folk")%>%
+  inner_join(nrc_sad)%>%
+  count(word, sort = TRUE)
+head(rec5_1)
+rec6<-dubois%>%
+  filter(title=="The Negro in the South\nHis Economic Progress in Relation to his Moral and Religious Development")%>%
+  inner_join(nrc_joy)%>%
+  count(word, sort = TRUE)
+head(rec6,10)
+rec6_1<-rec5<-dubois%>%
+  filter(title=="The Negro in the South\nHis Economic Progress in Relation to his Moral and Religious Development")%>%
+  inner_join(nrc_sad)%>%
+  count(word, sort = TRUE)
+head(rec6_1)
+rec7_1<-rec5<-dubois%>%
+  filter(title=="The Quest of the Silver Fleece: A Novel")%>%
+  inner_join(nrc_sad)%>%
+  count(word, sort = TRUE)
+head(rec7_1)
+rec7<-ec6_1<-rec5<-dubois%>%
+  filter(title=="The Quest of the Silver Fleece: A Novel")%>%
+  inner_join(nrc_joy)%>%
+  count(word, sort = TRUE)
+head(rec7)
+```
+
+```{r sent, include=TRUE, echo=TRUE}
+#get Sentiments for Frederick Douglass
+dubois_sentiment<-dubois%>%
+  inner_join(get_sentiments("bing"))%>%
+  count(title, index=linenumber%/%80, sentiment)%>%
+  spread(sentiment, n, fill = 0)%>%
+  mutate(sentiment=positive-negative)
+dubois_sentiment
+library(ggplot2)
+ggplot(dubois_sentiment, aes(index, sentiment, fill=title))+
+  geom_col(show.legend = FALSE)+
+  facet_wrap(~title, ncol=2, scales = "free_x")
+Booker_sentiment<-tidy_book%>%
+  inner_join(get_sentiments("nrc"))%>%
+  count(title, index=linenumber%/%80, sentiment)%>%
+  spread(sentiment, n, fill = 0)%>%
+  mutate(sentiment=joy-sadness)%>%
+  select(title,index, sentiment)
+head(Booker_sentiment)
+ggplot(Booker_sentiment, aes(index, sentiment, fill=title))+
+  geom_col(show.legend = FALSE)+
+  facet_wrap(~title, ncol = 2, scales = "free_x")
+
+booker_n<-tidy_book%>%
+  inner_join(get_sentiments("bing"))%>%
+  count(title, index=linenumber%/%80, sentiment)%>%
+  spread(sentiment, n, fill = 0)%>%
+  mutate(sentiment=positive-negative)
+ggplot(booker_n, aes(index, sentiment, fill=title))+
+  geom_col(show.legend = FALSE)+
+  facet_wrap(~title, ncol = 2, scales = "free_x")
 ```
 
 
