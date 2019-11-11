@@ -1,0 +1,273 @@
+---
+title: "African American Authors"
+author: "Daniel Sineus"
+date: "11/11/2019"
+output: word_document
+---
+
+**SENTIMENT ANALYSIS TO STUDY SOME BLACK AFRICAN AMERICAN LEADERS**
+
+**Objective**: *the primary aim of this paper is to present a correlation of the different* texts and the authors advocating the same cause. 
+
+*These authors are the following:*
+
+* W.E.B DUBOIS
+* FREDERICK DOUGLAS
+* ZORA NEALE HURSTON
+
+# The setting for the analysis
+The gutenbergr will be used to find the ID. Different ways of proceeding will be presented
+
+```{r setu, include=TRUE, echo=TRUE}
+library(gutenbergr) # We are supposed it was already installed
+library(dplyr)
+gutenberg_metadata%>%
+  filter(title=="The Marrow of Tradition") 
+
+```
+It was just an example in case you know the title of book. But this is not the case
+
+Let's begin by looking for the ID of Douglas's books and download the books by ID
+
+```{r seup, include=TRUE, echo=TRUE}
+gutenberg_works(author=="Douglass, Frederick")
+fred_books<-gutenberg_download(c(23,99,202,31839,34915), meta_fields = "title")
+```
+let's do the same for Booker T. Washington
+```{r se, include=TRUE, echo=TRUE}
+gutenberg_works(author=="Washington, Booker T.")
+booker_books<-gutenberg_download(c(2376,26507,45125), meta_fields = "title")
+```
+
+#Here comes the turn for Zora Neale Hurston
+```{r srte, include=TRUE, echo=TRUE}
+library(stringr)
+gutenberg_works(str_detect(author, "Hurston, Zora Neale"))
+neale_books<-gutenberg_download(c(15902,19435,17187,22146), meta_fields = "title")
+```
+
+
+```{r set, include=TRUE, echo=FALSE}
+library(stringr)
+dubois_books<-gutenberg_download(c(31254,15210,35399,15265,408), meta_fields = "title")
+head(dubois_books)
+```
+
+Count numbers of words in each text or words per book 
+For Dubois
+```{r setup, include=TRUE, echo=TRUE}
+library(knitr)
+kable(dubois_books%>%
+  count(title))
+```
+Count numbers of words in each text or words per book 
+For Booker T. Washington
+```{r ret, include=TRUE, echo=TRUE}
+library(knitr)
+kable(booker_books%>%
+  count(title))
+```
+Count numbers of words in each text or words per book 
+For Neale Hurston
+```{r seti, include=TRUE, echo=TRUE}
+library(knitr)
+kable(neale_books%>%
+  count(title))
+```
+
+Frequency for words for the books considered 
+For Neale Hurston
+```{r hurst, include=TRUE, echo=TRUE}
+library(knitr)
+library(tidytext)
+str(neale_books)
+book1<-neale_books%>%
+  unnest_tokens(word, text)%>%
+  anti_join(stop_words)
+str(book1)
+## Count words for Neale's books all together
+n_book1<-book1%>%
+  count(word,sort = TRUE)
+kable(head(n_book1, 20))
+```
+
+
+```{r neal, include=TRUE, echo=TRUE}
+library(knitr)
+book3<-neale_books%>%
+  unnest_tokens(word, text)%>%
+  anti_join(stop_words)
+str(book3)
+## Count words for Neale's books all together
+n_book<-book3%>%
+  count(word,sort = TRUE)
+head(n_book, 20)
+```
+
+
+
+```{r boook, include=FALSE, echo=TRUE}
+str(booker_books)
+book2<-booker_books%>%
+  unnest_tokens(word, text)%>%
+  anti_join(stop_words)
+str(book2)
+## Count words for Neale's books all together
+bfd<-book2%>%
+  count(word,sort = TRUE)
+head(bfd, 20)
+```
+
+
+```{r dubois, include=FALSE, echo=TRUE}
+book4<-dubois_books%>%
+  unnest_tokens(word, text)%>%
+  anti_join(stop_words)
+str(book4)
+web<-book4%>%
+  count(word, sort = TRUE)
+head(web,20)
+book5<-fred_books%>%
+  unnest_tokens(word,text)%>%
+  anti_join(stop_words)
+str(book5)
+fd<-head(book5,20)
+fred<-book5%>%
+  count(word, sort=TRUE)
+head(fred, 20)
+```
+
+
+```{r frequency, include=TRUE, echo=TRUE}
+library(dplyr)
+library(tidyverse)
+library(tidyr)
+freq<-bind_rows(mutate(bfd, author="Booker T. Washington"),
+                mutate(fred, author="Frederick Douglass"),
+                mutate(web, author="Du Bois"))%>%
+  mutate(word=str_extract(word, "[a-z']+"))%>%
+  count(author, word)%>%
+  group_by(author)%>%
+  mutate(proportion=n/sum(n))%>%
+  select(-n)%>%
+  spread(author, proportion)%>%
+  gather(author, proportion, `Booker T. Washington`:`Du Bois`)
+freq<-drop_na(freq)
+kable(head(freq,10))
+```
+
+
+```{r plot, include=TRUE, echo=FALSE, fig.cap="Word FREQU"}
+library(scales)
+ggplot(freq, aes(x=proportion, y="Frederick Douglass", color=abs(`Frederick Douglass`-proportion)))+
+  geom_abline(color="gray40", lty=2)+
+  geom_jitter(alpha=0.1, size=2.5, width = 0.3, height = 0.3) +
+  geom_text(aes(label=word), check_overlap = TRUE, vjust=1.5)+
+  scale_color_gradient(limits=c(0, 0.001), low="darkslategray4", high="gray75")+
+  facet_wrap(~author, ncol = 2)+
+  theme(legend.position = "none")+
+  labs(y="Du Bois", x=NULL)
+```
+
+# Sentiment Analysis
+```{r sentiment, include=TRUE, echo=TRUE}
+library(dplyr)
+library(stringr)
+library(tidytext)
+booker_books<-gutenberg_download(c(2376,26507,45125), meta_fields = "title")
+head(booker_books)
+tidy_book<-booker_books%>%
+  group_by(title)%>%
+  mutate(linenumber=row_number(),
+         chapter=cumsum(str_detect(text, regex("^chapter [\\divxlc]",
+                                               ignore_case = TRUE))))%>%
+  ungroup()%>%
+  unnest_tokens(word,text)
+head(tidy_book,40)
+library(tidytext)
+library(textdata)
+lexicon_nrc()
+get_sentiments("afinn")
+get_sentiments("nrc")
+nrc_joy<-get_sentiments("nrc")%>%
+  filter(sentiment=="joy")
+nrc_joy
+rec<-tidy_book%>%
+  filter(title=="Up from Slavery: An Autobiography")%>%
+  inner_join(nrc_joy)%>%
+  count(word, sort = TRUE)
+head(rec)
+nrc_sad<-get_sentiments("nrc")%>%
+  filter(sentiment=="sadness")
+nrc_sad
+sad<-tidy_book%>%
+  filter(title=="Up from Slavery: An Autobiography")%>%
+  inner_join(nrc_sad)%>%
+  count(word, sort = TRUE)
+head(sad)
+
+rec1<-tidy_book%>%
+  filter(title=="The Future of the American Negro")%>%
+  inner_join(nrc_joy)%>%
+  count(word, sort=TRUE)
+head(rec1) # At that time, while was a symbol of priviledge compared to black people
+rec2<-tidy_book%>%
+  filter(title=="The Future of the American Negro")%>%
+  inner_join(nrc_sad)%>%
+  count(word, sort=TRUE)
+head(rec2,10)
+ rec3<-tidy_book%>%
+   filter(title=="The Story of Slavery")%>%
+   inner_join(nrc_joy)%>%
+   count(word, sort = TRUE)
+head(rec3)
+rec4<-tidy_book%>%
+   filter(title=="The Story of Slavery")%>%
+   inner_join(nrc_sad)%>%
+   count(word, sort = TRUE)
+head(rec4)
+# frequency and total of words per book
+book2<-booker_books%>%
+  group_by(title)%>%
+  unnest_tokens(word, text)%>%
+  anti_join(stop_words)%>%
+  count(word, sort = TRUE)
+head(book2)
+  
+total_book2<-book2%>%
+  group_by(title)%>%
+  summarise(total=sum(n))
+head(total_book2)
+book_words<-left_join(book2, total_book2)
+ter<-book_words%>%
+  mutate(tot=(n/total)*100)
+head(ter)
+ter1<-ter%>%
+  filter(title=="The Future of the American Negro"& n>50)
+
+books3<-dubois_books%>%
+  group_by(title)%>%
+  unnest_tokens(word,text)%>%
+  anti_join(stop_words)%>%
+  count(word, sort = TRUE)
+head(book3)
+```
+
+
+# check the distribution for each novel
+```{r distribution, include=TRUE, echo=TRUE}
+book_words%>%
+  ggplot(aes(n/total), fill=title)+
+  geom_histogram(show.legend = FALSE)+
+  xlim(NA, 0.0009)+
+  facet_wrap(~title, ncol = 2, scales = "free_y")%>%
+  na.omit()
+
+```
+
+
+
+```{r zipf, include=TRUE, echo=TRUE}
+
+
+```
