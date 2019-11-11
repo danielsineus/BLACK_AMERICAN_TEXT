@@ -285,6 +285,28 @@ rec7<-ec6_1<-rec5<-dubois%>%
   inner_join(nrc_joy)%>%
   count(word, sort = TRUE)
 head(rec7)
+neale_tidy<-neale_books%>%
+  group_by(title)%>%
+  mutate(linenumber=row_number(),
+         chapter=cumsum(str_detect(text, regex("^chapter [\\divxlc]",ignore_case = TRUE))))%>%
+  ungroup()%>%
+  unnest_tokens(word, text)
+head(neale_tidy)
+bing_word<-neale_tidy%>%
+  inner_join(get_sentiments("bing"))%>%
+  count(word, sentiment,sort = TRUE)%>%
+  ungroup()
+head(bing_word)
+bing_word%>%
+  group_by(sentiment)%>%
+  top_n(30)%>%
+  ungroup()%>%
+  mutate(word=reorder(word, n))%>%
+  ggplot(aes(word, n, fill=sentiment))+
+  geom_col(show.legend = FALSE)+
+  facet_wrap(~sentiment, scales = "free_y")+
+  labs(y="Contribution to sentiment", x=NULL)+
+  coord_flip()
 ```
 
 ```{r sent, include=TRUE, echo=TRUE}
