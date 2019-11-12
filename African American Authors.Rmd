@@ -423,6 +423,19 @@ fred_douglass%>%
 
 
 ```{r zipf, include=TRUE, echo=TRUE}
+ frequent_rank<-book_words%>%
+  group_by(title)%>%
+  mutate(rank=row_number(),termfrequency=n/total)%>%
+  ggplot(aes(rank, termfrequency, color=title))+
+  geom_line(size=1.1, alpha=0.8, show.legend = FALSE)+
+  scale_x_log10()+
+  scale_y_log10()
+frequent_rank
 
-
+frequent_rank%>%
+  ggplot(aes(rank, `termfrequency`, color=title))+
+  geom_abline(intercept = -0.6, slope = -1.1, color="gray30", linetype=2)+
+  geom_line(size=1.1, alpha=0.8, show.legend = FALSE)+
+  scale_x_log10()+
+  scale_y_log10()
 ```
