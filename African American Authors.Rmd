@@ -139,7 +139,7 @@ fred<-book5%>%
 head(fred, 20)
 ```
 
-
+#Eliminate
 ```{r frequency, include=TRUE, echo=TRUE}
 library(dplyr)
 library(tidyverse)
@@ -153,15 +153,15 @@ freq<-bind_rows(mutate(bfd, author="Booker T. Washington"),
   mutate(proportion=n/sum(n))%>%
   select(-n)%>%
   spread(author, proportion)%>%
-  gather(author, proportion, `Booker T. Washington`:`Du Bois`)
+  gather(author, proportion, `Booker T. Washington`:`Frederick Douglass`)
 freq<-drop_na(freq)
 kable(head(freq,10))
 ```
-
+Eliminate
 
 ```{r plot, include=TRUE, echo=FALSE, fig.cap="Word FREQU"}
 library(scales)
-ggplot(freq, aes(x=proportion, y="Frederick Douglass", color=abs(`Frederick Douglass`-proportion)))+
+ggplot(freq, aes(x=proportion, y="Du Bois", color=abs(`Du Bois`-proportion)))+
   geom_abline(color="gray40", lty=2)+
   geom_jitter(alpha=0.1, size=2.5, width = 0.3, height = 0.3) +
   geom_text(aes(label=word), check_overlap = TRUE, vjust=1.5)+
@@ -439,3 +439,4 @@ frequent_rank%>%
   scale_x_log10()+
   scale_y_log10()
 ```
+
