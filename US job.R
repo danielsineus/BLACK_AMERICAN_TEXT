@@ -3,12 +3,25 @@ library(tidytext)
 library(dplyr)
 library(knitr)
 library(tm)
-library(textclean)
 library(stringr)
 ble<-read.csv("US-based jobs.csv", header = T, stringsAsFactors = F)
 str(ble)
 ble1<-ble[,c(2:6)]
 str(ble1)
+source<-ble%>%
+  group_by(company_name)%>%
+  count()%>%
+  arrange(-n)
+grap<-head(source, 5)
+grap
+library(ggplot2)
+library(RColorBrewer)
+grap%>%
+  ggplot(aes(company_name, n, fill=company_name))+
+  geom_bar(stat = "identity")+
+  theme(legend.position = "none")
+  
+
 ble1$JobText<-str_to_lower(ble1$JobText)
 ble1$JobText<-str_trim(ble1$JobText, side = "both")
 
@@ -17,6 +30,86 @@ ble1$Jobtext<- gsub('[[:digit:]]+', '', ble1$JobText)
 ble1$JobText<- gsub('[[:punct:]]+', '', ble1$JobText)
 ble1$JobText<- gsub("http[[:alnum:]]*", "", ble1$JobText)
 ble1$JobText<- gsub("([[:alpha:]])\1+", "", ble1$JobText)
+
+replace_reg <- "https?://[^\\s]+|&amp;|&lt;|&gt;|\bRT\\b"
+word<-ble%>%
+  mutate(text=str_replace_all(ble$JobText, replace_reg,""))%>%
+  unnest_tokens(word, text, token = "words")
+word1<-word%>%
+  anti_join(stop_words)%>%
+  count(word, sort = TRUE)
+# Abilities and skills looked for in Amazon Company
+library(wordcloud)
+library(RColorBrewer)
+library(reshape2)
+word2<-word%>%
+  anti_join(stop_words)%>%
+  filter(company_name=="Amazon.com")%>%
+  count(word, sort = TRUE)%>%
+  with(wordcloud(word, n, max.words = 200, rot.per = 0.35, colors = brewer.pal(8, "Dark2")))
+  
+word3<-word%>%
+  anti_join(stop_words)%>%
+  filter(company_name=="MATSON NAVIGATION COMPANY, INC")%>%
+  count(word, sort = TRUE)
+wordcloud(word, n, max.words = 200, rot.per=0.35, color)
+library(wordcloud)
+library(RColorBrewer)
+library(reshape2)
+wordcloud(word2, min.freq = 3, scale =c(5,-2), random.order = FALSE, random.color = FALSE, colors = "Dark2")
+
+word4<-word%>%
+  anti_join(stop_words)%>%
+  filter(company_name=="Petco")%>%
+  count(word, sort = TRUE)
+
+word5<-word%>%
+  anti_join(stop_words)%>%
+  filter(company_name=="North Shore Medical Center")%>%
+  count(word, sort = TRUE)
+
+head(word2)
+head(word3)
+word2<-word%>%
+  anti_join(stop_words)%>%
+  filter(company_name=="Amazon.com")%>%
+  count(word, sort = TRUE)
+
+
+
+bigrams<-ble%>%
+  mutate(text=str_replace_all(ble$JobText, replace_reg, ""))%>%
+  unnest_tokens(bigram, text, token = "ngrams", n=2)
+head(bigrams, 6)
+
+bigrams<-bigrams%>%
+  separate(bigram, into = c("first", "second"), sep=" ", remove = FALSE)%>%
+  anti_join(stop_words, by=c("first"="word"))%>%
+  anti_join(stop_words, by=c("second"="word"))%>%
+  filter(str_detect(first, "[a-z]")&
+           str_detect(second, "[a-z]"))
+red<-bigrams%>%
+  group_by(company_name)%>%
+  count(bigram, sort = TRUE)
+
+hred<-head(bigrams,10)
+hred
+bigrams2<-ble%>%
+  mutate(text=str_replace_all(ble$JobText, replace_reg,""))%>%
+  unnest_tokens(bigra, text, token = "ngrams", n=3)
+bigrams2<-bigrams2%>%
+  separate(bigra, into = c("first", "second", "third"), sep = " ", remove = FALSE)%>%
+  anti_join(stop_words, by=c("first"="word"))%>%
+  anti_join(stop_words, by=c("second"="word"))%>%
+  anti_join(stop_words, by=c("third"="word"))%>%
+  filter(str_detect(first, "[a-z]")&
+           str_detect(second, "[a-z]")&
+           str_detect(third, "[a-z]"))
+
+reds<-bigrams2%>%
+  group_by(company_name)%>%
+  count(bigra, sort = TRUE)
+class(word1)
 #check the number of Na per column
 sum(is.na(ble1$JobTitle))
 na_count <-sapply(ble1, function(y) sum(length(which(is.na(y)))))
