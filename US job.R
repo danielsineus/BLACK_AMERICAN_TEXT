@@ -111,7 +111,9 @@ red<-bigrams%>%
 red%>%
   top_n(15)%>%
   ggplot(aes(x=bigram,n),y=n)+
-  geom_bar(stat = "identity", width = 0.5)
+  geom_bar(stat = "identity", width = 0.5)+
+  xlab(NULL)+
+  coord_flip()
 
 hred<-head(bigrams,10)
 hred
