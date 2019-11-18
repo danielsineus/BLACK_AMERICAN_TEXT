@@ -8,6 +8,7 @@ ble<-read.csv("US-based jobs.csv", header = T, stringsAsFactors = F)
 str(ble)
 ble1<-ble[,c(2:6)]
 str(ble1)
+# to find the amount of jobs offered by the diverent companies
 source<-ble%>%
   group_by(company_name)%>%
   count()%>%
@@ -16,12 +17,13 @@ grap<-head(source, 5)
 grap
 library(ggplot2)
 library(RColorBrewer)
+# an histogram to display the top 10 companies
 grap%>%
   ggplot(aes(company_name, n, fill=company_name))+
   geom_bar(stat = "identity")+
   theme(legend.position = "none")
   
-
+#clean the text
 ble1$JobText<-str_to_lower(ble1$JobText)
 ble1$JobText<-str_trim(ble1$JobText, side = "both")
 
@@ -30,14 +32,29 @@ ble1$Jobtext<- gsub('[[:digit:]]+', '', ble1$JobText)
 ble1$JobText<- gsub('[[:punct:]]+', '', ble1$JobText)
 ble1$JobText<- gsub("http[[:alnum:]]*", "", ble1$JobText)
 ble1$JobText<- gsub("([[:alpha:]])\1+", "", ble1$JobText)
-
 replace_reg <- "https?://[^\\s]+|&amp;|&lt;|&gt;|\bRT\\b"
 word<-ble%>%
   mutate(text=str_replace_all(ble$JobText, replace_reg,""))%>%
   unnest_tokens(word, text, token = "words")
+
 word1<-word%>%
   anti_join(stop_words)%>%
   count(word, sort = TRUE)
+head(word1, 20)
+#Barplot to determine the most words used
+corpus<-word%>%
+  anti_join(stop_words)%>%
+  count(word, sort = TRUE)%>%
+  ungroup()%>%
+  top_n(30)%>%
+  ggplot(aes(x=fct_reorder(word, n),y=n))+
+  geom_bar(stat="identity", width = 0.5)+
+  xlab(NULL)+
+  coord_flip()+
+  ylab("Word Frequency")+
+  ggtitle("Most Common Corpus Words")+
+  theme(legend.position = "none")
+corpus
 # Abilities and skills looked for in Amazon Company
 library(wordcloud)
 library(RColorBrewer)
@@ -91,6 +108,10 @@ bigrams<-bigrams%>%
 red<-bigrams%>%
   group_by(company_name)%>%
   count(bigram, sort = TRUE)
+red%>%
+  top_n(15)%>%
+  ggplot(aes(x=bigram,n),y=n)+
+  geom_bar(stat = "identity", width = 0.5)
 
 hred<-head(bigrams,10)
 hred
