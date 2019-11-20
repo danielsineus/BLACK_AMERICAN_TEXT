@@ -141,6 +141,7 @@ head(fred, 20)
 
 #Eliminate
 ```{r frequency, include=TRUE, echo=TRUE}
+
 library(dplyr)
 library(tidyverse)
 library(tidyr)
