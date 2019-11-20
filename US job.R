@@ -4,6 +4,7 @@ library(dplyr)
 library(knitr)
 library(tm)
 library(stringr)
+library(tidyr)
 ble<-read.csv("US-based jobs.csv", header = T, stringsAsFactors = F)
 str(ble)
 ble1<-ble[,c(2:6)]
@@ -40,7 +41,7 @@ word<-ble%>%
 word1<-word%>%
   anti_join(stop_words)%>%
   count(word, sort = TRUE)
-head(word1, 20)
+class(word1)
 #Barplot to determine the most words used
 corpus<-word%>%
   anti_join(stop_words)%>%
@@ -91,10 +92,29 @@ word2<-word%>%
   anti_join(stop_words)%>%
   filter(company_name=="Amazon.com")%>%
   count(word, sort = TRUE)
+cloud<-word%>%
+  group_by(word, company_name)%>%
+  anti_join(stop_words)%>%
+  count(word, sort = TRUE)%>%
+  group_by(word, company_name)%>%
+  select(-word)%>%
+  filter(company_name=="Amazon.com"|company_name=="Petco")
+
+head(cloud, 10)
+
+cloud1<-cloud%>%
+  spread(key="company_name", value="n", fill=0)
+head(cloud1)
+
+long <- cloud %>% 
+  tibble::rowid_to_column(word) %>% 
+  spread(company_name, n, -word, -rowid)
+head(long)
+long %>% 
+  spread(key="company_name", value="n")
 
 
-
-bigrams<-ble%>%
+value = bigrams<-ble%>%
   mutate(text=str_replace_all(ble$JobText, replace_reg, ""))%>%
   unnest_tokens(bigram, text, token = "ngrams", n=2)
 head(bigrams, 6)
@@ -108,9 +128,11 @@ bigrams<-bigrams%>%
 red<-bigrams%>%
   group_by(company_name)%>%
   count(bigram, sort = TRUE)
+head(red,5)
 red%>%
+  ungroup()%>%
   top_n(15)%>%
-  ggplot(aes(x=bigram,n),y=n)+
+  ggplot(aes(x=fct_reorder(bigram,n),y=n))+
   geom_bar(stat = "identity", width = 0.5)+
   xlab(NULL)+
   coord_flip()
