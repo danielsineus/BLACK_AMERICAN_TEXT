@@ -42,6 +42,8 @@ word1<-word%>%
   anti_join(stop_words)%>%
   count(word, sort = TRUE)
 class(word1)
+head(word1)
+tail(word1)
 #Barplot to determine the most words used
 corpus<-word%>%
   anti_join(stop_words)%>%
@@ -87,21 +89,23 @@ word5<-word%>%
   count(word, sort = TRUE)
 
 head(word2)
+tail(word2)
 head(word3)
 word2<-word%>%
   anti_join(stop_words)%>%
   filter(company_name=="Amazon.com")%>%
   count(word, sort = TRUE)
-cloud<-word%>%
-  group_by(word, company_name)%>%
+cloud<-word<-ble%>%
+  mutate(text=str_replace_all(ble$JobText, replace_reg,""))%>%
+  unnest_tokens(word, text, token = "words")%>%
   anti_join(stop_words)%>%
-  count(word, sort = TRUE)%>%
-  group_by(word, company_name)%>%
-  select(-word)%>%
-  filter(company_name=="Amazon.com"|company_name=="Petco")
+  filter(company_name=="Amazon.com"|company_name=="Petco")%>%
+  count(word, company_name)%>%
+  spread(company_name, n, fill =0)
 
-head(cloud, 10)
-
+brd<-tail(cloud, 500)
+cloud1<-gsub('[[:digit:]]+', '', cloud)
+head(cloud,10)
 cloud1<-cloud%>%
   spread(key="company_name", value="n", fill=0)
 head(cloud1)
