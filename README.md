@@ -4,7 +4,7 @@ The  personal part of this piece of work is to be able to give proof of my abili
 The authors's texts or books could be imported from the gutenberg project :  https://www.gutenberg.org/. During the work, I haven't neither read the books which are being analyzed nor showed any presomption that I have a good deal of knowledge of contents of these books. I have only read a book by Booker T. Washington and one by W.E.B Du Bois. In a nutchell, I've assumed that they were all tormented by the same issues around their time. Therefore, the words of their books will show similarities.
 
 ## Gathering Data
-As mentionned above, the books or texts are stored in a project called gutenberg project : https://www.gutenberg.org/. the import of data has been possible with the gutenberg package. The function gutenberg.download() has been pretty much useful to excute the job. Other packages have been used utilized, such as:
+As mentionned above, the books or texts are stored in a project called gutenberg project : https://www.gutenberg.org/. the import of data has been possible with the gutenberg package. The function gutenberg.download() has been pretty much useful to excute the job. Other packages have been utilized, such as:
 * tidyverse
 * stingr
 * tidytext
