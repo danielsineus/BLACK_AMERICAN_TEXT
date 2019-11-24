@@ -15,4 +15,4 @@ The first thing to tidy the data collected is by tokenizing the texts into a bag
 
 ## Comments on the Results
 --- 
-The text studies are essentially based on some statistic approaches, that is tonsay, frequency approaches because we are interested in determing the words that have the high frequencies, these words could repeat in all these tects of the author. 
+The text studies are essentially based on some statistic approaches, frequency approach and the sentiment approach. We are interested in determing the words that have the high frequencies, these words could repeat in all these tects of the author. 
