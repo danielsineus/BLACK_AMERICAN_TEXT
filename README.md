@@ -15,7 +15,23 @@ The first thing to tidy the data collected is by tokenizing the texts into a bag
 
 ## Comments on the Results
 --- 
-The text studies are essentially based on some statistic approaches, frequency approach and the sentiment approach. We are interested in determing the words that have the high frequencies, these words could repeat in all these tects of the author. Firstly, we take a glimpse of the number of words used by each author for each book or text. Considering the books alone, some authors used more words than others to write their stories or about the issues. Zora Nearl Hurston used less amount of words among the four authors targeted in this study. In the same vein, Frederick Douglass comes second. In general, quantifying the amounts of words used by author to convey their messages or debate issues that preoccupied them comes down to the synthesis that W.E.B Dubois and Booker T. Washington are more prolific and verbose if we only base on the texts or books existed. Secondly, we determine the proportion of the same words used by the three authors. It helps use understand words that are likely to be used and in what proportion. Let's take an example of slavery. 
+The text studies are essentially based on some statistic approaches, frequency approach and the sentiment approach. We are interested in determing the words that have the high frequencies, these words could repeat in all these tects of the author. Firstly, we take a glimpse of the number of words used by each author for each book or text. Considering the books alone, some authors used more words than others to write their stories or about the issues. Zora Nearl Hurston used less amount of words among the four authors targeted in this study. In the same vein, Frederick Douglass comes second. In general, quantifying the amounts of words used by author to convey their messages or debate issues that preoccupied them comes down to the synthesis that W.E.B Dubois and Booker T. Washington are more prolific and verbose if we only base on the texts or books existed. An illustration might help picture the differences. 
+# Du Bois
+| Du Bois's Books|Number of words|
+|---|---|
+|`The Souls of Black Folk`|6769|
+|`The Quest of the Silver Fleece: A Novel`|14492|
+|`His Economic Progress in Relation to his Moral and Religious Development`|3568|
+|`Darkwater: Voices from within the Veil`|7420|
+
+|Hurston's books|number of words|
+|--|--|
+|De Turkey and De Law: A Comedy in three Acts|3666|
+|Poker!|199|
+|The Mule_bone: A Comedy of Negro Life in three Acts|2142|
+|Three Plays: Lawing;Forty Yards;Woofing|1025|
+
+Booker T. Washington, for most the . Secondly, we determine the proportion of the same words used by the three authors. It helps use understand words that are likely to be used and in what proportion. Let's take an example of slavery. 
 ## Graphs
 ![graph 1](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_dubois.png)
 ![graph 2](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_book.png)
