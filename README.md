@@ -32,15 +32,19 @@ The text studies are essentially based on some statistic approaches, frequency a
 |Three Plays: Lawing;Forty Yards;Woofing|1025|
 
 Booker T. Washington, for most the . Secondly, we determine the proportion of the same words used by the three authors. It helps use understand words that are likely to be used and in what proportion. Let's take an example of a few words amongst a long list of words. 
+
 |words|Washington|Du Bois|Douglass|
-|--|--|
+|--|--|--|--|
 |abolition|0.01424|0.00614|0.0243|
 |die|0.01424|0.00614|0.0162|
 |hanged|0.01424|0.00614|0.0162|
 |slavery|0.0284|0.00614|0.0324|
 
 ## Graphs
+
 ![graph 1](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_dubois.png)
+The sentiment analysis is mostly characterized by a binary distinction, such as positivity versus negativity or joy versus sadness. In Du Bois's case, we base our approach on NRC Emotion Lexicon ![link](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm). The sentiment analysis can subjectively make clear the feelings by which the authors were overwhelmed when they were writing any texts. By the same token, the same feelings can get through the authors's readers. When considering the figure above, the texts or books written by Du Bois except one of them bring more feelings toward negativity. More words tend toward negativity are used.  
+
 ![graph 2](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_book.png)
 ![graph 3](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_fred.png)
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
