@@ -48,7 +48,7 @@ The sentiment analysis is mostly characterized by a binary distinction, such as 
 
 ![graph 2](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_book.png)
 
-For the Booker T Washington's case, we base our approach on the nrc lexicons. ![link](https://rstudio-pubs-static.s3.amazonaws.com/236096_2ef4566f995e48c1964013310bf197f1.html)
+For the Booker T Washington's case, we base our approach on the nrc lexicons. ![link](https://rstudio-pubs-static.s3.amazonaws.com/236096_2ef4566f995e48c1964013310bf197f1.html). The binary distinction opposes joy to sadness. When analyzing the graphs, booker T. Washington's books bring more saddness than joy to the readers.
 
 ![graph 3](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_fred.png)
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
