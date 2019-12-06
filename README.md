@@ -54,3 +54,6 @@ For the Booker T Washington's case, we base our approach on the nrc lexicons. ![
 
 The Frederick Douglass wrote the article that appears first in the set of graphs with exilerating terms. On the contrary, the second and third articles reveal words related to sadness. The book entitled "My Bondage and my Freedom" is embeded with more words expressing sadness. 
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
+
+##Discussion and Alternatives
+I will orient the discussion toward weaknesses or lack of semantic insight other that some semantic analysis based on a sentiment approach where the whole data are tokenized by bags of words. 
