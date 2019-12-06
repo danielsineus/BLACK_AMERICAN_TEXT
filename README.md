@@ -56,6 +56,6 @@ The Frederick Douglass wrote the article that appears first in the set of graphs
 
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
 
-##Discussion and Alternatives
+## Discussion and Alternatives
 
 I will orient the discussion toward weaknesses or lack of semantic insight other that some semantic analysis based on a sentiment approach where the whole data are tokenized by bags of words. 
