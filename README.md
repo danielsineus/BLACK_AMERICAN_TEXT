@@ -40,7 +40,7 @@ Booker T. Washington, for most the . Secondly, we determine the proportion of th
 |hanged|0.01424|0.00614|0.0162|
 |slavery|0.0284|0.00614|0.0324|
 
-## Graphs
+## Results and Graphs
 
 ![graph 1](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_dubois.png)
 
@@ -58,4 +58,5 @@ The Frederick Douglass wrote the article that appears first in the set of graphs
 
 ## Discussion and Alternatives
 
-I will orient the discussion toward weaknesses or lack of semantic insight other that some semantic analysis based on a sentiment approach where the whole data are tokenized by bags of words. 
+I will orient the discussion toward weaknesses or lack of semantic insight other that some semantic analysis based on a sentiment approach where the whole data are tokenized by bags of words. The words have been isolated to conduct the sentiment analysis. We have infered that context can't be grasped by this analysis because so many contextual components have been consigned into oblivion. it is important to remind that the sentiment analysis enables us to perceive the writer's feelings at the time that the texts were written. other feelings can be considered by the bing lexicons, But we only rely on the dichotomy joy and unhappiness.
+The discussion can always be taken to another level outside the context of this text mining. It is not possible yet, as far as we know, for any laymen like me  or students  to conduct certain text mining analyses on creole text. The universal dependencies don't incorporate creole last time we checked. The opinion and sentiment lexicons (bing, Afinn, NRC) have not been yet considered for the Haitian creole. Therefore, we can't really attribute any sentiment to the words.
