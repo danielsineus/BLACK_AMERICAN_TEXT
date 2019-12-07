@@ -48,7 +48,14 @@ The sentiment analysis is mostly characterized by a binary distinction, such as 
 
 ![graph 2](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_book.png)
 
-For the Booker T Washington's case, we base our approach on the nrc lexicons. ![link](https://rstudio-pubs-static.s3.amazonaws.com/236096_2ef4566f995e48c1964013310bf197f1.html)
+For the Booker T Washington's case, we base our approach on the nrc lexicons. ![link](https://rstudio-pubs-static.s3.amazonaws.com/236096_2ef4566f995e48c1964013310bf197f1.html). The binary distinction opposes joy to sadness. When analyzing the graphs, The book entitled "The Story of Slavery" bring more saddness than joy to the readers, however the book titled "The Future of the American Negro" makes the readers feel a sort of joy. Readers can experience bith joy and sadness. But, it is not clear saying that one feeling will prevail. The writer might be the one experince the feelings and transfer these feelings through his writings by picking unconsciously words that might expressing feelings related to joy or sadness.
 
 ![graph 3](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_fred.png)
+
+The Frederick Douglass wrote the article that appears first in the set of graphs with exilerating terms. On the contrary, the second and third articles reveal words related to sadness. The book entitled "My Bondage and my Freedom" is embeded with more words expressing sadness. 
+
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
+
+## Discussion and Alternatives
+
+I will orient the discussion toward weaknesses or lack of semantic insight other that some semantic analysis based on a sentiment approach where the whole data are tokenized by bags of words. 
