@@ -456,4 +456,44 @@ frequent_rank%>%
   scale_x_log10()+
   scale_y_log10()
 ```
+# Word relationship
+```{r relationship, include=TRUE, echo=TRUE}
+# let's identify the parts of speech
+
+fred_bigram<-fred_books%>%
+  group_by(title)%>%
+  unnest_tokens(bigram, text, token = "ngrams", n=2)%>%
+  select(-gutenberg_id)%>%
+  count(bigram, sort = TRUE)
+head(fred_bigram)
+resdr<-fred_bigram%>%
+  separate(bigram, c("word1", "word2"), sep=" ")%>%
+  filter(!word1%in%stop_words$word,
+         !word2%in%stop_words$word)%>%
+  count(title,word1,word2, sort = TRUE)
+resdr_unite<-resdr%>%
+  unite(bigram, word1,word2, sep=" ")
+head(resdr_unite,20)
+booker_bigram<-booker_books%>%
+  group_by(title)%>%
+  unnest_tokens(bigram, text, token = "ngrams", n=2)%>%
+  select(-gutenberg_id)%>%
+  count(bigram, sort = TRUE)
+
+dubois_bigram<-dubois_books%>%
+  group_by(title)%>%
+  unnest_tokens(bigram,text, token = "ngrams", n=2)%>%
+  select(-gutenberg_id)%>%
+  count(bigram, sort=TRUE)
+dubois_unite<-dubois_bigram%>%
+  separate(bigram,  c("word1", "word2"), sep = " ")%>%
+  filter(!word1 %in% stop_words$word,
+         !word2 %in% stop_words$word)%>%
+  count(title, word1,word2, sort = TRUE)%>%
+  unite(bigram, word1,word2, sep = " ")
+  head(dubois_bigram)
+  
+head(dubois_unite,20)
+
+```
 
