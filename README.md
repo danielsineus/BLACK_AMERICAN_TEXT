@@ -41,8 +41,10 @@ Booker T. Washington, for most the . Secondly, we determine the proportion of th
 |slavery|0.0284|0.00614|0.0324|
 
 ## Results and Graphs
-These feelings can be the authors'ones. They might be thereafter transfered to the readers When reading the authors' texts.
+the figures that are displayed below will be commented to get knowdledge out of them. the 4 first figures have to do with the sentiment analysis. The sentiment analysis does the job of summarize the feelings expressed by the texts. These feelings can be the authors'ones. They might be thereafter transfered to the readers When reading the authors' texts.
+
 ![graph 1](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_dubois.png)
+
 The sentiment analysis is mostly characterized by a binary distinction, such as positivity versus negativity or joy versus sadness. For Du Bois's case, we base our approach on NRC Emotion Lexicon ![link](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm). The sentiment analysis can subjectively make clear the feelings by which the authors were overwhelmed when they were writing any texts. By the same token, the same feelings can get through the authors's readers. When considering the figure above, the texts or books written by Du Bois except one of them bring more feelings toward negativity. More words tend toward negativity are used.  
 
 ![graph 2](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_book.png)
