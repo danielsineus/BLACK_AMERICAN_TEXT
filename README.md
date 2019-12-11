@@ -41,9 +41,8 @@ Booker T. Washington, for most the . Secondly, we determine the proportion of th
 |slavery|0.0284|0.00614|0.0324|
 
 ## Results and Graphs
-
+These feelings can be the authors'ones. They might be thereafter transfered to the readers When reading the authors' texts.
 ![graph 1](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_dubois.png)
-
 The sentiment analysis is mostly characterized by a binary distinction, such as positivity versus negativity or joy versus sadness. For Du Bois's case, we base our approach on NRC Emotion Lexicon ![link](https://saifmohammad.com/WebPages/NRC-Emotion-Lexicon.htm). The sentiment analysis can subjectively make clear the feelings by which the authors were overwhelmed when they were writing any texts. By the same token, the same feelings can get through the authors's readers. When considering the figure above, the texts or books written by Du Bois except one of them bring more feelings toward negativity. More words tend toward negativity are used.  
 
 ![graph 2](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_book.png)
@@ -56,9 +55,9 @@ The Frederick Douglass wrote the article that appears first in the set of graphs
 
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
 
-## Discussion and Alternatives
+## Discussion and Perspectives
 
-We will orient the discussion toward weaknesses. Firstly, we notice a lack of semantic insights that this text mining analysis didn't enable me to cover. Here, we only elucidate some semantic analysis based on a sentiment approach where the whole data are tokenized by bags of words, which refers to the isolation of each word per row. This sentiment analysis is envisioned to characterize the feelings that might arouse the authors' texts. These feelings can be the authors'ones. They might be thereafter transfered to the readers When reading the authors' texts. Therefore, other feelings that could be depicted through context are not taken into account. In fact, contexts inside the texts can't be grasped by this sentiment analysis because so many contextual components have been consigned into oblivion by this approach. But, it is important to remind that the sentiment analysis enables us to perceive only the writer's feelings at the time that the texts were written, which is important but not sufficient to develop more insights. 
+We will orient the discussion toward some weaknesses that might be pinpointed by critics. Firstly, we notice a lack of semantic insights that this text mining analysis is subject to. Here, we only elucidate some semantic analysis based on a sentiment approach where the whole data are tokenized by bags of words, which refers to the isolation of each word per row. This sentiment analysis is envisioned to characterize the feelings that might arouse the authors' texts. Therefore, a contextual approach might have enabled ones to discover other possible feelings displayed in the texts, but are not perceived by the sentiment approach. In fact, contexts inside the texts can't be grasped by this sentiment analysis due to the fact that so many contextual components have been consigned into oblivion by this quantitative approach. But, it is important to remind that the sentiment analysis enables us to perceive only the writer's feelings at the time that the texts were written, which is important but not sufficient to develop more insights into the whole feelings incorporated in the texts. 
 
-We acknoledge that other feelings can be considered by the bing lexicons, But we only rely on the dichotomy joy and unhappiness.
+We acknowledge that other feelings could have be considered by the bing lexicons, such as anger, trust, fear, disgust..., But we only rely on the dichotomy joy and unhappiness.
 The discussion can always be taken to another level outside the context of this text mining. It is not possible yet, as far as we know, for any laymen like me  or students  to conduct certain text mining analyses on creole texts or books. Some packages don't really incorporate the creole lexicons. For example, we have udpipe package, which we didn't use. It helps us identify the grammatical components. Another example is that of The universal dependencies that don't have creole among the list of languages last time we checked. The opinion and sentiment lexicons (bing, Afinn, NRC) have not been yet considered for the Haitian creole. Therefore, we can't really attribute any sentiment to the words in creole. This work is left to the community of linguistics and programmers to work on this project in order to make sure that creole can be used at this level of analysis.
