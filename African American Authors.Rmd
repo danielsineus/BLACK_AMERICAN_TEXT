@@ -241,12 +241,35 @@ total_book2<-book2%>%
   summarise(total=sum(n))
 head(total_book2)
 book_words<-left_join(book2, total_book2)
+book_tdf<-fred_books%>%
+  group_by(title)%>%
+  unnest_tokens(word,text)%>%
+  anti_join(stop_words)%>%
+  count(word, sort = TRUE)
+total_book_tdf<-book_tdf%>%
+  group_by(title)%>%
+  summarise(total=sum(n))
+head(total_book_tdf)
+book_words2<-left_join(book_tdf, total_book_tdf)
+head(dubois)
+bok_dubois<-dubois_books%>%
+  group_by(title)%>%
+  unnest_tokens(word, text)%>%
+  anti_join(stop_words)%>%
+  count(word, sort = TRUE)
+head(bok_dubois)
+bok_dubois_tdf<-bok_dubois%>%
+  group_by(title)%>%
+  summarise(total=sum(n))
+bok_tdf<-left_join(bok_dubois, bok_dubois_tdf)
+
+
 ter<-book_words%>%
   mutate(tot=(n/total)*100)
 head(ter)
 ter1<-ter%>%
   filter(title=="The Future of the American Negro"& n>50)
-
+head(ter1)
 #Sentiments for W.E.B DU Bois  
 dubois<-dubois_books%>%
   group_by(title)%>%
@@ -371,6 +394,7 @@ ggsave(plot_fred,file="plot_fred.png", width = 5, height = 4, dpi = 100)
 ```
 
 
+
 # check the distribution for each novel
 ```{r distribution, include=TRUE, echo=TRUE}
 book_words%>%
@@ -449,13 +473,68 @@ fred_douglass%>%
   scale_y_log10()
 frequent_rank
 
-frequent_rank%>%
-  ggplot(aes(rank, `termfrequency`, color=title))+
-  geom_abline(intercept = -0.6, slope = -1.1, color="gray30", linetype=2)+
-  geom_line(size=1.1, alpha=0.8, show.legend = FALSE)+
-  scale_x_log10()+
-  scale_y_log10()
+# the bind_tf_idf function 
+#determine the words that occur most in a collection of books per author
+# For Booker T. Washington
+head(book_words)
+book_words1<-book_words%>%
+  bind_tf_idf(title, word, n)
+
+head(book_words1)
+book_words1%>%
+  arrange(desc(tf_idf))%>%
+  mutate(word=factor(word, levels = rev(unique(word))))%>%
+  group_by(title)%>%
+  top_n(1)%>%
+  ungroup()%>%
+  ggplot(aes(word, tf_idf, fill=title))+
+  geom_col(show.legend = FALSE)+
+  labs(x=NULL, y="tf_idf")+
+  facet_wrap(~title, ncol = 2, scales = "free")+
+  coord_flip()
+
+book_words1%>%
+  select(-total)%>%
+  arrange(desc(tf_idf))
+book_word2_1<-book_words2%>%
+  bind_tf_idf(title,word,n)
+
+book_word2_1<-book_word2_1%>%
+  select(-total)%>%
+  arrange(desc(tf_idf))
+head(book_word2_1)
+
+book_word2_1%>%
+  arrange(desc(tf_idf))%>%
+  mutate(word=factor(word, levels = rev(unique(word))))%>%
+  group_by(title)%>%
+  top_n(1)%>%
+  ungroup()%>%
+  ggplot(aes(word, tf_idf, fill=title))+
+  geom_col(show.legend = FALSE)+
+  labs(x=NULL, y="tf_idf")+
+  facet_wrap(~title, ncol = 2, scales = "free")+
+  coord_flip()
+
+bok_tdf1<-bok_tdf%>%
+  bind_tf_idf(title, word,n)%>%
+  select(-total)%>%
+  arrange(desc(tf_idf))
+head(bok_tdf1)
+
+bok_tdf1%>%
+  arrange(desc(tf_idf))%>%
+  group_by(title)%>%
+  top_n(15)%>%
+  ungroup()%>%
+  ggplot(aes(word, tf_idf, fill=title))+
+  geom_col(show.legend = FALSE)+
+  labs(x=NULL, y="tf_idf")+
+  facet_wrap(~title, ncol = 2, scales = "free")+
+  coord_flip()
 ```
+
+
 # Word relationship
 ```{r relationship, include=TRUE, echo=TRUE}
 # let's identify the parts of speech
