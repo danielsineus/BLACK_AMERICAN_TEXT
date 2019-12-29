@@ -413,52 +413,62 @@ library(wordcloud)
 library(reshape2)
 library(ggplot2)
 #Booker T. Washington
-png("machine.png", width = 12, height = 8, units = "in", res = 300)
+
+png("washington.png", width = 12, height = 8, units = "in", res = 300)
 tidy_book%>%
   anti_join(stop_words)%>%
   count(word, sort = TRUE)%>%
   with(wordcloud(word, n, max.words = 120, rot.per = 0.35, colors = brewer.pal(8, "Dark2")))
-png("machine.png", width = 12, height = 8, units = "in", res = 300)
-
+dev.off()
 #Booker for comparing positivity and negativity
+
+png("bookerT.png", width = 12, height = 8, units = "in", res = 300)
 tidy_book%>%
   inner_join(get_sentiments("bing"))%>%
   count(word, sentiment,sort = TRUE)%>%
   acast(word~sentiment, value.var = "n", fill=0)%>%
   comparison.cloud(colors = c("gray20", "blue"), max.words = 200)
+dev.off()
 #DUBOIS
+png("dubois.png", width = 12, height = 8, units = "in", res = 300)
 dubois%>%
   anti_join(stop_words)%>%
   count(word)%>%
   with(wordcloud(word, n, max.words = 120, rot.per = 0.35, colors = brewer.pal(8, "Dark2")))
 
+png("WEBdubois.png", width = 12, height = 8, units = "in", res = 300)
 dubois%>%
   inner_join(get_sentiments("bing"))%>%
   count(word, sentiment,sort = TRUE)%>%
   acast(word~sentiment, value.var = "n", fill=0)%>%
   comparison.cloud(colors = c("gray20", "blue"), max.words = 120)
 
+png("neale.png", width = 12, height = 8, units = "in", res = 300)
 neale_tidy%>%
   anti_join(stop_words)%>%
   count(word)%>%
   with(wordcloud(word, n, max.words = 200, rot.per = 0.35, colors = brewer.pal(8, "Dark2")))
+dev.off()
+png("nealetidy.png", width = 12, height = 8, units = "in", res = 300)
 neale_tidy%>%
   inner_join(get_sentiments("bing"))%>%
   count(word, sentiment,sort = TRUE)%>%
   acast(word~sentiment, value.var = "n", fill=0)%>%
   comparison.cloud(colors = c("gray20", "blue"), max.words = 200)
-# Frederick Douglass
+# Frederick Douglass 
+png("douglass.png", width = 12, height = 8, units = "in", res = 300)
 fred_douglass%>%
   anti_join(stop_words)%>%
   count(word)%>%
   with(wordcloud(word, n, max.words = 100, rot.per = 0.35, colors = brewer.pal(8, "Dark2")))
-
+dev.off()
+png("freddouglass.png", width = 12, height = 8, units = "in", res = 300)
 fred_douglass%>%
   inner_join(get_sentiments("bing"))%>%
   count(word, sentiment,sort = TRUE)%>%
   acast(word~sentiment, value.var = "n", fill=0)%>%
   comparison.cloud(colors = c("gray20", "blue"), max.words = 200)
-
+dev.off()
 ```
 
 
@@ -573,6 +583,10 @@ dubois_unite<-dubois_bigram%>%
   head(dubois_bigram)
   
 head(dubois_unite,20)
-
+library(wordcloud2)
+help("comparison.cloud")
 ```
+
+
+
 
