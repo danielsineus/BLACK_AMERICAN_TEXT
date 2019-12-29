@@ -65,6 +65,8 @@ The first article in the set of graphs for Frederick  Douglass is written by som
 
 ![graph 8](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/douglass.png)
 
+![graph 9](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/bookerT.png)
+
 
 Here we don't really discuss the term frequency, but in the code lines we pointed out the words that are more important and frequently used in each book after leaving out the stopwords such as: the, and, of, is, and so one. On top of it, a term's inverse documentfrequency was used. According to the this internet source, https://www.sciencedirect.com/topics/computer-science/inverse-document-frequency: ***The measure called term frequency-inverse document frequency (tf-idf) is defined as tfij*idfi (Salton and McGill, 1986). It is a measure of importance of a term ti in a given document dj. It is a term frequency measure which gives a larger weight to terms which are less common in the corpus. The importance of very frequent terms will then be lowered, which could be a desirable feature***. To explain in plain words, this approach will enable ones to see the words that occur more frequently in a collection of an author's books in hte context of this work. As mentioned above, we won't talk about them here. Anyone who is really to reproduce the code lines will see them as well as the comments. 
 
