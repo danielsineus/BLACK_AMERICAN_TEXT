@@ -58,10 +58,11 @@ The first article in the set of graphs for Frederick  Douglass is written by som
 
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
 
-This graph doesn't say much about Neale Hurston's corpus stemmed from her collection of books. Its reason here is to show how we put the top words that are negative alongside those that are positive. It's obvious that there are more positive words.    
+This graph says much more about Neale Hurston's corpus stemmed from her collection of books than about each of her books. Its reason here is to show how we put the top words that are negative alongside those that are positive. It's obvious that there are more positive words in general when looking at the graph. But what is missing is to be able to decipher which book conveys more positive feelings than negative ones. This graph is not able to let anyone make this judgement.
 
 
 ![graph 6](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/machine.png)
+
 
 ![graph 7](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/freddouglass.png)
 
