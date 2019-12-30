@@ -1,4 +1,4 @@
-# Quantitative Analysis of three African American Authors
+# Quantitative Analysis of four African American Authors
 ----
 The objective of this document remains academic and personal. It is academic in the sense that it can provide materials for people to discuss the contents and to reproduce the codes while learning from the process. It is also deemed to be a tutorial due to fact the code lines used to conduct the litteray study of the texts of some African-American authors might be useful for those who would like to analyse texts found in the gutenberg project or elsewhere.
 The  personal part of this piece of work is to be able to give proof of my ability to use R programming for text mining. On one hand, The study aims to quantify the books or any texts published by four (4) African-American authors known and revered for their writings about black Americans'issues in the US. On the other hand, this piece of work will present analyses that will be based on sentiments approaches and also figure out similar themes developped by these authors. The authors are as following: Booker T. Washington (1890 -1915), W.E.B Du Bois (1868 - 1963), Frederick Douglass (1818 - 1985), and Zora Nearle Hurston (1891 - 1960). 
@@ -7,6 +7,7 @@ The authors's texts or books could be imported from the gutenberg project :  htt
 ## Gathering and Tidying Data
 As mentionned above, the books or texts are stored in a project called gutenberg project : https://www.gutenberg.org/. the import of data has been possible with the gutenberg package. The function gutenberg.download() has been pretty much useful to excute the job. The best way to know the exact texts to download. One needs to know the ID of each book. The ID can be found in the project or a function can be used to find the ID of the text provinding the titles of the texts or books are known. Other packages have been utilized, such as:
 * tidyverse
+* tidydata
 * stingr
 * tidytext
 * ggplot2
@@ -56,6 +57,8 @@ For the Booker T Washington's case, we base our approach on the nrc lexicons. ![
 The first article in the set of graphs for Frederick  Douglass is written by sombre words that might trigger someone's unhappiness about an issue. The articles that appear second and third in the set of graphs are filled with more exilirating attributes than sad words. Nevertheless, the last article reveal words related to sadness. The book entitled "My Bondage and my Freedom" is embeded with more words expressing sadness. 
 
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
+
+This graph doesn't say much about Neale Hurston's corpus stemmed from her collection of books. Its reason here is to show how we put the top words that are negative alongside those that are positive. It's obvious that there are more positive words.    
 
 
 ![graph 6](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/machine.png)
