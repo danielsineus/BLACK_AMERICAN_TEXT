@@ -57,7 +57,6 @@ The first article in the set of graphs for Frederick  Douglass is written by som
 
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
 
-![graph 5](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/washington.png)
 
 ![graph 6](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/machine.png)
 
@@ -65,7 +64,6 @@ The first article in the set of graphs for Frederick  Douglass is written by som
 
 Frederick Douglass delineates the slaves with words that demonstrate personalities affected by the consequences of slavery. A few words, mostly adjective, that occur most repeatedly are the followings: sad, poor, subjected, ignorant, fugitive, and anxious. The slaves’ treatment was not less than severe and was characterized by words, such as: savage, brutal, bitter, cruel, killed or died, death or dead, severe, coarse, bleeding, bloody, murder and painful. We ponder the reason why work occurs a lot in Washington’s corpus. The answers that we can come up with are: first is that the former slaves might truly get freedom, pride, respect, love, success, happiness, reputation, relief, and safety. 
 
-![graph 8](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/douglass.png)
 
 ![graph 9](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/bookerT.png)
 
