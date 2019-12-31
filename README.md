@@ -67,7 +67,7 @@ This graph says much more about Neale Hurston's corpus stemmed from her collecti
 
 ![graph](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/WEBbois.png)
 
-![graph](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/dubois.png)
+The wordcloud graph presents Du Bois's dichotomy of sentiments, positive versus negative. Du Bois's graph shows a lot of similarities with that of Booker T. Washington. Anyone can notice in the graph that work occurs in the Du Bois's texts almost as much as it does in Booker T. Washington's texts. Aroud work, other words can be found such as proud, freedom, love, educated, better. Both might not use the word work in the same context but what matters is that both want the former slaves' welfare. When considering slaves' treatment, the three authors used a lot  words such as: death, poor, fear, awful, murder, and poverty.
 
 
 ![graph 7](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/freddouglass.png)
