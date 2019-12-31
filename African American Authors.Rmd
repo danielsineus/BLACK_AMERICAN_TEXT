@@ -583,8 +583,6 @@ dubois_unite<-dubois_bigram%>%
   head(dubois_bigram)
   
 head(dubois_unite,20)
-library(wordcloud2)
-help("comparison.cloud")
 ```
 
 
