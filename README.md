@@ -68,6 +68,8 @@ This graph says much more about Neale Hurston's corpus stemmed from her collecti
 ![graph 6](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/machine.png)
 
 
+![graph](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/dubois.png)
+
 
 ![graph 7](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/freddouglass.png)
 
