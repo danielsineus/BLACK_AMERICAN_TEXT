@@ -418,7 +418,7 @@ png("washington.png", width = 12, height = 8, units = "in", res = 300)
 tidy_book%>%
   anti_join(stop_words)%>%
   count(word, sort = TRUE)%>%
-  with(wordcloud(word, n, max.words = 120, rot.per = 0.35, colors = brewer.pal(8, "Dark2")))
+  with(wordcloud(word, n, max.words = 120, main="Booker", rot.per = 0.35, colors = brewer.pal(8, "Dark2")))
 dev.off()
 #Booker for comparing positivity and negativity
 
@@ -583,6 +583,7 @@ dubois_unite<-dubois_bigram%>%
   head(dubois_bigram)
   
 head(dubois_unite,20)
+help("wordcloud")
 ```
 
 
