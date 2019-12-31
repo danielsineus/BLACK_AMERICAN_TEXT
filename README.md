@@ -57,6 +57,7 @@ For the Booker T Washington's case, we base our approach on the nrc lexicons. ![
 
 ![graph 3](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_fred.png)
 
+
 The first article in the set of graphs for Frederick  Douglass is written by sombre words that might trigger someone's unhappiness about an issue. The articles that appear second and third in the set of graphs are filled with more exilirating attributes than sad words. Nevertheless, the last article reveal words related to sadness. The book entitled "My Bondage and my Freedom" is embeded with more words expressing sadness. 
 
 ![graph 4](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/plot_neal.png)
@@ -65,6 +66,7 @@ This graph says much more about Neale Hurston's corpus stemmed from her collecti
 
 
 ![graph 6](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/machine.png)
+
 
 
 ![graph 7](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/freddouglass.png)
