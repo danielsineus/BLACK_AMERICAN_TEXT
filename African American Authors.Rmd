@@ -435,8 +435,9 @@ dubois%>%
   anti_join(stop_words)%>%
   count(word)%>%
   with(wordcloud(word, n, max.words = 120, rot.per = 0.35, colors = brewer.pal(8, "Dark2")))
+dev.off()
 
-png("WEBdubois.png", width = 12, height = 8, units = "in", res = 300)
+png("WEBbois.png", width = 12, height = 8, units = "in", res = 300)
 dubois%>%
   inner_join(get_sentiments("bing"))%>%
   count(word, sentiment,sort = TRUE)%>%
