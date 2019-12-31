@@ -77,7 +77,7 @@ Frederick Douglass delineates the slaves with words that demonstrate personaliti
 
 ![graph 9](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/bookerT.png)
 
-As far as Booker T. Washington In general, given the negative words associated with slaves, two aspects are essential to point out by gathering some lexical items that could carry two themes: the personality of the slaves and their treatments. The slaves were weak, ignorant, poor, broken, discouraging, and nervous. The slaves endured inhumane and subhuman treatments when considering these words: hard, difficult, hardships, servitude, trouble, condemnation, injury, burden, evil, and cruel. All these words can depict the vile life and cruelty the slaves were subject to.
+As far as Booker T. Washington In general, given the negative words associated with slaves, two aspects are essential to point out by gathering some lexical items that could carry two themes: the personality of the slaves and their treatments. The slaves were weak, ignorant, poor, broken, discouraging, and nervous. The slaves endured inhumane and subhuman treatments when considering these words: hard, difficult, hardships, servitude, trouble, condemnation, injury, burden, evil, and cruel. All these words can depict the vile lives and cruelty the slaves were subject to.
 
 
 ## Term Frequency- Inverse Document Frequency
