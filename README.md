@@ -68,6 +68,7 @@ This graph says much more about Neale Hurston's corpus stemmed from her collecti
 ![graph 6](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/machine.png)
 
 
+
 ![graph 7](https://github.com/danielsineus/BLACK_AMERICAN_TEXT/blob/master/freddouglass.png)
 
 Frederick Douglass delineates the slaves with words that demonstrate personalities affected by the consequences of slavery. A few words, mostly adjective, that occur most repeatedly are the followings: sad, poor, subjected, ignorant, fugitive, and anxious. The slaves’ treatment was not less than severe and was characterized by words, such as: savage, brutal, bitter, cruel, killed or died, death or dead, severe, coarse, bleeding, bloody, murder and painful. We ponder the reason why work occurs a lot in Washington’s corpus. The answers that we can come up with are: first is that the former slaves might truly get freedom, pride, respect, love, success, happiness, reputation, relief, and safety. 
