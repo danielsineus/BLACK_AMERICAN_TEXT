@@ -35,7 +35,7 @@ The text studies are essentially based on some statistic approaches, such as fre
 |The Mule_bone: A Comedy of Negro Life in three Acts|2142|
 |Three Plays: Lawing;Forty Yards;Woofing|1025|
 
-Booker T. Washington, for most the . Secondly, we determine the proportion of the same words used by the three authors. It helps use understand words that are likely to be used and in what proportion. Let's take an example of a few words amongst a long list of words. 
+Before going further in the analysis, we decide not to present much about Nearle Hurston, because similarities between her texts and the others are not much noticeable. We determine the proportion of the same words used by the three authors. It helps use understand words that are likely to be used by authors and in what proportion in regards of the book or text. Let's take an example of a few words amongst a long list of words. 
 
 |words|Washington|Du Bois|Douglass|
 |--|--|--|--|
